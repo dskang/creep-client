@@ -12,7 +12,10 @@ module.exports = (grunt) ->
     watch:
       coffee:
         files: ["<%= creep.app %>/{,*/}*.coffee"]
-        tasks: ["coffee:dist"]
+        tasks: ["coffee"]
+      copy:
+        files: ["<%= creep.app %>/manifest.json"]
+        tasks: ["copy"]
 
     clean:
       dist:
@@ -43,7 +46,6 @@ module.exports = (grunt) ->
             "manifest.json"
           ]
         ]
-
 
   grunt.registerTask "default", [
     "clean"

@@ -19,9 +19,11 @@ class Tracker
               @updateServer activeTab.url
 
   @updateServer: (url) ->
+    data =
+      url: url
     xhr = new XMLHttpRequest()
     xhr.open 'POST', 'http://creep.dskang.com/url'
-    xhr.send
-      url: url
+    xhr.setRequestHeader 'Content-Type', 'application/json'
+    xhr.send JSON.stringify data
 
 window.setInterval Tracker.queryBrowser, Tracker.config.QUERY_INTERVAL * 1000
